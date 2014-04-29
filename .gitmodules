@@ -1,0 +1,3 @@
+[submodule "plugins"]
+	path = plugins
+	url = git@source.8drive.cn:jcm-component/ci-plugins.git
