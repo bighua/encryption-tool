@@ -1,7 +1,6 @@
 <ivy-module version="2.0">
-  <info organisation="com.jcm" module="demo2013" revision="1.0">
-    <ivyauthor name="Zhong Lizhi" url="mailto:zhonglizhi@8chedao.com" />
-    <ivyauthor name="Xu Huiyao" url="mailto:xuhuiyao@8chedao.com" />
+  <info organisation="com.jcm" module="encryption-tool" revision="1.0">
+    <ivyauthor name="Zhu Xianghua" url="mailto:zhuxianghua@8chedao.com" />
     <description>
       Describes the current module. This tag is the only one which can contain
       free text, including html. It is used to describe the module itself,
@@ -18,6 +17,8 @@
   <dependencies defaultconf="*->default">
     <dependency org="org.hamcrest" name="hamcrest-all" rev="1.3" />
     <dependency org="junit" name="junit" rev="4.8.2" transitive="false" />
+    <dependency org="com.ztools" name="ztools" rev="1.14" transitive="true"/>
+    <dependency org="commons-codec" name="commons-codec" rev="1.8"/>
     
     <!-- globe exclude -->
     <exclude org="*" ext="*" type="source" />

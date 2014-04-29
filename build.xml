@@ -1,4 +1,4 @@
-<project name="demo2013" default="test" basedir=".">
+<project name="encryption-tool" default="test" basedir=".">
   <description>
     project description
   </description>
