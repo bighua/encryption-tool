@@ -102,6 +102,19 @@ public class Hex {
 	}
 
 	/**
+	 * 将十六进制字符串转换为字节数组
+	 * 
+	 * @param data
+	 *            16进制字符串
+	 * @return byte[]
+	 * @throws RuntimeException
+	 *             如果源十六进制字符数组是一个奇怪的长度，将抛出运行时异常
+	 */
+	public static byte[] decodeHexStr(String data) {
+		return decodeHex(data.toCharArray());
+	}
+
+	/**
 	 * 将十六进制字符数组转换为字节数组
 	 * 
 	 * @param data

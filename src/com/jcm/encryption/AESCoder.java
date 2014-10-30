@@ -1,6 +1,7 @@
 package com.jcm.encryption;
 import java.security.Key;
 import java.security.NoSuchAlgorithmException;
+import java.security.SecureRandom;
 
 import javax.crypto.Cipher;
 import javax.crypto.KeyGenerator;
@@ -44,6 +45,27 @@ public class AESCoder {
         //生成一个密钥
         SecretKey  secretKey = kg.generateKey();
         return secretKey.getEncoded();
+    }
+    
+    /**
+     * 使用种子生成密钥
+     * @param seed
+     * @return
+     */
+    public static Key initKeyWithSeed(byte[] seed) {
+        //返回生成指定算法的秘密密钥的 KeyGenerator 对象
+        KeyGenerator kg = null;
+        try {
+            kg = KeyGenerator.getInstance(KEY_ALGORITHM);
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        }
+        SecureRandom random = new SecureRandom(seed);
+        
+        kg.init(random);
+        Key key = kg.generateKey();
+        
+        return key;
     }
     
     /**
@@ -173,4 +195,18 @@ public class AESCoder {
         //执行操作
         return cipher.doFinal(data);
     }
+    
+    public static void main(String[] args) {
+		try {
+			String key = "12345";
+			Key k = initKeyWithSeed(key.getBytes());
+			System.out.println(Hex.encodeHexStr(k.getEncoded()));
+			String encodeStr = Hex.encodeHexStr(encrypt("abc".getBytes(), k));
+			System.out.println(encodeStr);
+			String decodeStr = new String(decrypt(Hex.decodeHexStr(encodeStr), k));
+			System.out.println(decodeStr);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 }
